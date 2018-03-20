@@ -1,0 +1,460 @@
+@import "colors.scss", "mixins/flexbox.scss", "mixins/cross.scss", "fonts.scss", "animations.scss";
+
+html, body, menu, p, h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: $bgcolor;
+  font-family: "GTEestiProDisplay-Regular";
+  @media (max-width: 480px){
+    background-color: $white;
+  }
+}
+
+.header {
+  margin: 9px 9px 0px 9px;
+  max-height: 55px;
+  padding: 0 55px;
+  border-bottom: 1px solid $bgcolor;
+  background-color: $white;
+  position: relative;
+  @media (max-width: 480px){
+    padding-right: 0;
+    height: 0px;
+    padding-left: 0;
+    @include flex-direction(column);
+    margin: 0;
+    font-size: 12px;
+  }
+  &__btn {
+    width: 18px;
+    height: 10px;
+    position: absolute;
+    left: 26px;
+    top: 21px;
+    text-align: center;
+    z-index: 10;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-image: url("../img/k1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    @media (max-width: 480px){
+      left: 19px;
+      top: 18px;
+    }
+  }
+  &__logo {
+    font-family: "GTEestiProDisplay-Bold";
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #000;
+    @media (max-width: 480px){
+      display: none;
+    }
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: -10px;
+  width: calc(100% - 18px);
+  z-index: 1000;
+  @media (max-width: 480px){
+    width: 100%;
+    top: -1px;
+  }
+}
+
+.nav {
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(center);
+  position: relative;
+  @media (max-width: 480px){
+    transform: translateY(-200%);
+    transition: transform 1s ease;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    background-color: $white;
+    border-bottom: 1px solid $grey;
+  }
+  &-js {
+    transform: translateY(0px);
+  }
+}
+
+.menu {
+  margin-right: auto;
+  @media (max-width: 480px){
+    margin-right: 0;
+  }
+  &__link {
+    display: inline-block;
+    padding: 18px;
+    color: #000;
+    text-transform: uppercase;
+    @media (min-width: 768px) and (max-width: 991px){
+      padding: 18px 3px;
+    }
+  }
+  &__s-icon {
+    width: 14px;
+    height: 15px;
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('../img/search.png');
+    background-repeat: no-repeat;
+    @media (max-width: 480px){
+      left: 22px;
+    }
+  }
+}
+
+.user-menu {
+  margin-left: auto;
+}
+
+.wrap {
+  background-color: $white;
+  margin: 0 9px;
+  text-align: center;
+  padding: 90px 0;
+  margin-bottom: 40px;
+  @media (max-width: 480px){
+    margin: 0;
+    padding: 25px 0;
+    font-size: 12px;
+    width: 100%;
+  }
+}
+
+.container {
+  margin: auto;
+  width: 790px;
+  @media (max-width: 480px){
+    width: 100%;
+  }
+  @media (min-width: 768px) and (max-width: 991px){
+    width: 100%;
+    padding: 0 25px;
+  }
+  &--fat {
+    margin: 30px auto;
+    width: 989px;
+    @include flexbox();
+    @media (max-width: 480px){
+      width: 100%;
+      @include flex-direction(column);
+      @include align-items(center);
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+      width: 100%;
+      padding: 0 25px;
+      @include flex-direction(column);
+      @include align-items(center);
+    }
+  }
+}
+
+.text--grey {
+  color: $grey;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.content {
+  &__title {
+    margin: 15px 0;
+    padding: 0 45px;
+    font-size: 48px;
+    font-weight: 300;
+    @media (max-width: 480px){
+      font-size: 24px;
+      text-align: center;
+      padding: 0 15px;
+    }
+  }
+  &__text {
+    margin-bottom: 30px;
+    text-align: left;
+    font-family: "AktivGroteskCorp-Regular";
+    font-size: 18px;
+    line-height: 1.75;
+    color: $grey-text;
+    @media (max-width: 480px){
+      font-size: 14px;
+      text-align: justify;
+      padding: 0 15px;
+    }
+  }
+  &__text:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.info {
+  margin: auto;
+  width: 215px;
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+  &__pic {
+    width: 25px;
+    height: 25px;
+    background-image: url("../img/pic.png");
+    background-repeat: no-repeat;
+  }
+  &__name {
+    font-size: 12px;
+  }
+  &__date {
+    font-size: 12px;
+    color: $grey;
+  }
+}
+
+.echo {
+  &__title {
+    font-family: "GTEestiProDisplay-Medium";
+    font-size: 24px;
+    padding: 0 20px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  &__pic {
+  margin: auto;
+  margin-top: 24px;
+  margin-bottom: 20px;
+  width: 432px;
+  height: 372px;
+  background-image: url("../img/echo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  @media (max-width: 480px){
+    width: 100%;
+    margin: 0;
+  }
+  }
+}
+
+.stats {
+  margin: 50px 0 100px 0;
+  max-width: 790px;
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+  @include flex-wrap(wrap);
+  @include box-shadow(0px, 20px, 90px, rgba(205,207,216,1));
+  @media (max-width: 480px){
+    margin: 30px 0;
+  }
+  @media (min-width: 768px) and (max-width: 991px){
+    margin: 50px 0 70px 0;
+  }
+  &__box {
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    position: relative;
+    z-index: 1;
+    width: 156px;
+    height: 60px;
+    background-color: #fff;
+    @media (min-width: 768px) and (max-width: 991px){
+      width: 136px;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(space-around);
+    }
+    @media (max-width: 480px){
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(space-between);
+      width: 50%;
+      margin-bottom: 2px;
+      padding: 0 50px;
+      &:last-child {
+        @media (max-width: 480px){
+          width: 100%;
+          @include justify-content(space-evenly);
+        }
+      }
+    }
+  }
+  &__text {
+    font-size: 16px;
+    font-weight: 500;
+    @media (min-width: 768px) and (max-width: 991px){
+      font-size: 14px;
+    }
+  }
+  &__text--grey {
+    font-size: 14px;
+    font-weight: 500;
+    color: $grey;
+  }
+}
+
+.slider {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.slick-slide { /* spacing in between each slide */
+    margin: 0 12px;
+}
+
+.wiki-box {
+  position: relative;
+  margin-right: 25px;
+  width: 175px;
+  height: 150px;
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(flex-start);
+  @media (max-width: 480px) {
+    margin-right: 0;
+  }
+  &__btn {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    bottom: 25px;
+    left: 70px;
+    color: #000;
+    background-color: #fff;
+    background-image: url("../img/w.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    @include border-radius(50px);
+    @include box-shadow(0px, 0px, 20px, rgba(0,0,0, 0.25));
+    -webkit-transition: .3s ease-in-out;
+	  transition: .3s ease-in-out;
+    &:hover {
+      @include box-shadow(0px, 0px, 40px, rgba(0,0,0, 0.7));
+    }
+  }
+  &__name {
+    font-family: "GTEestiProDisplay-Medium";
+    margin-top: 32px;
+  }
+}
+
+.similar {
+  text-align: center;
+  &__title {
+    margin-top: 40px;
+    margin-bottom: 35px;
+    font-family: "GTEestiProDisplay-Medium";
+    font-size: 24px;
+  }
+  &__link {
+    color: #000;
+    @media (max-width: 480px){
+      width: 50%;
+      margin-bottom: 15px;
+    }
+    @media (min-width: 768px) and (max-width: 991px){
+      margin-bottom: 15px;
+    }
+
+  }
+  &__box {
+    margin: 0 auto;
+    margin-top: 35px;
+    margin-bottom: 95px;
+    max-width: 1196px;
+    @include flexbox();
+    @include justify-content(space-between);
+    @include flex-wrap(wrap);
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+      width: 640px;
+    }
+  }
+  &__item {
+    width: 280px;
+    box-sizing: border-box;
+    background-color: #fff;
+    -webkit-transition: .3s ease-in-out;
+	  transition: .3s ease-in-out;
+    @media (max-width: 480px){
+      width: 100%;
+    }
+    &:hover {
+      background-color: rgba(0,0,0,0.3);
+      color: #fff;
+    }
+  }
+  &__img {
+    display: block;
+    margin: auto;
+    margin-bottom: 25px;
+    -webkit-transition: .3s ease-in-out;
+	  transition: .3s ease-in-out;
+    @media (max-width: 480px){
+      width: 100%;
+      margin: 0;
+    }
+  }
+  &__text {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-family: "GTEestiProDisplay-Medium";
+    font-size: 21px;
+    padding: 0 26px;
+    @media (max-width: 480px){
+      font-size: 18px;
+      margin: 10px 0;
+      padding: 0 20px;
+    }
+  }
+}
+
+.view-like-box {
+  height: 35px;
+  padding: 0 13px;
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+  border-top: 1px solid $grey;
+  &__text {
+    font-size: 12px;
+  }
+}
+
+.view-box,
+.like-box {
+  @include flexbox();
+  @include align-items(center);
+  &__img {
+    margin-right: 5px;
+  }
+}
